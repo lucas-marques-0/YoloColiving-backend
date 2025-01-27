@@ -19,3 +19,6 @@ Para que a conexão funcione, coloque os valores nescessários no arquivo .env, 
 2 - Execute  `npm run start` para rodar o projeto.
 
 3 - Pronto para requisições.
+
+![{6C9C91D8-E3C1-4104-BA7E-0EEB398FDD7E}](https://github.com/user-attachments/assets/7f325b6b-1acb-40be-9e6c-fec8c9bc5bf3)
+
