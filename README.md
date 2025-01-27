@@ -1,4 +1,4 @@
-# Projeto Back-end (Yolo Coliving)
+# Projeto Back-end [NodeJS + AWS] (Yolo Coliving)
 
 ![image](https://github.com/user-attachments/assets/6724eb37-83a1-4510-b90b-7ef1f1c1ffe3)
 
