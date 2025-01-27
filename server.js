@@ -36,7 +36,6 @@ app.get("/users", async (req, res) => {
       res.status(404).json({ message: "Nenhum usuário encontrado." });
     }
   } catch (error) {
-    console.error("Erro: ", error.message);
     res.status(500).json({ message: "Erro ao buscar usuários." });
   }
 });
@@ -59,7 +58,6 @@ app.post("/users", async (req, res) => {
     await dynamoClient.send(new PutCommand(params));
     res.status(200).json({ message: "Usuário adicionado com sucesso!" }); 
   } catch (error) {
-    console.error("Erro: ", error.message);
     res.status(500).json({ message: "Erro ao adicionar usuário." });
   }
 });
@@ -86,7 +84,6 @@ app.delete("/users/:id", async (req, res) => {
     await dynamoClient.send(new DeleteCommand(deleteParams));
     res.status(200).json({ message: `Usuário deletado com sucesso!` });
   } catch (error) {
-    console.error("Erro:", error.message);
     res.status(500).json({ message: "Erro ao deletar usuário."});
   }
 });
@@ -130,7 +127,6 @@ app.put('/users/:id', async (req, res) => {
     await dynamoClient.send(new UpdateCommand(updateParams));
     res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
   } catch (error) {
-    console.error('Erro ao editar usuário:', error.message);
     res.status(500).json({ message: 'Erro ao editar usuário no DynamoDB' });
   }
 });
@@ -161,7 +157,6 @@ app.post("/users/api", async (req, res) => {
     const { Items } = await dynamoClient.send(new ScanCommand(scanParams));
     res.status(200).json(Items)
   } catch (error) {
-    console.error("Erro: ", error.message);
     res
       .status(500)
       .json({ message: "Erro ao consumir API ou salvar dados no DynamoDB" });
