@@ -21,7 +21,7 @@ app.use(
     origin: "*",
   })
 );
-app.use(express.json()); // Permitem que o req.body seja automaticamente convertido de JSON para um objeto JavaScript.
+app.use(express.json()); 
 
 // Busca todos os usuários.
 app.get("/users", async (req, res) => {
