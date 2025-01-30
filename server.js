@@ -7,12 +7,12 @@ import { getDynamoClient } from "./config/Credentials.js";
 import { v4 as uuidv4 } from "uuid"; 
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config(); 
 
 const port = process.env.PORT || 3333;
 const app = express();
 
-const dynamoClient = getDynamoClient();
+const dynamoClient = getDynamoClient(); 
 const TABLE_NAME = process.env.TABLE_NAME;
 
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.use(
     origin: "*",
   })
 );
-app.use(express.json());
+app.use(express.json()); // Permitem que o req.body seja automaticamente convertido de JSON para um objeto JavaScript.
 
 // Busca todos os usuários.
 app.get("/users", async (req, res) => {
@@ -105,9 +105,10 @@ app.put('/users/:id', async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
-    const updateParams = {
+    const updateParams = { 
       TableName: TABLE_NAME,
       Key: { id },
+      // Define quais campos serão atualizados.
       UpdateExpression: `
         SET Nome = :Nome, 
             Telefone = :Telefone, 
@@ -115,6 +116,7 @@ app.put('/users/:id', async (req, res) => {
             Tipo = :Tipo, 
             DataDeCadastro = :DataDeCadastro
       `,
+      // Substitui os campos pelos valores.
       ExpressionAttributeValues: {
         ':Nome': Nome,
         ':Telefone': Telefone,
